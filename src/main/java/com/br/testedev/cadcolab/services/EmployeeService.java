@@ -27,5 +27,9 @@ public class EmployeeService {
 	public List<Employee> getListEmployee() {
 		return repository.findAll();
 	}
+	
+	public void deleteEmployee(Employee employee) {
+		repository.delete(employee);
+	}
 
 }

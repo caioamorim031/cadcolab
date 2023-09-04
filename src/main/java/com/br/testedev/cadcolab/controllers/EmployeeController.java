@@ -3,6 +3,7 @@ package com.br.testedev.cadcolab.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -36,5 +37,14 @@ public class EmployeeController {
 	@GetMapping("/")
 	public List<Employee> getEmployee(){
 		return service.getListEmployee();
+	}
+	
+	@DeleteMapping("/delete")
+	public void deleteEmployee(@RequestParam Long pEmployee) {
+		Employee employee = service.findEmployee(pEmployee);
+		
+		if(employee != null) {
+			service.deleteEmployee(employee);
+		}
 	}
 }
